@@ -197,12 +197,12 @@ def get_frame_oriented(sequences, instance_exceptions, carrada_path, write_resul
             dense_ra_data[0] = dense_ra_data_background
 
             sparse_paths = os.path.join(sparse_annotations_paths, frame)
-            if not os.path.exists(sparse_paths):  # 是否存在这个文件夹
-                os.makedirs(sparse_paths)  # 如果没有这个文件夹，那就创建一个
+            if not os.path.exists(sparse_paths):
+                os.makedirs(sparse_paths)
 
             dense_paths = os.path.join(dense_annotations_paths, frame)
-            if not os.path.exists(dense_paths):  # 是否存在这个文件夹
-                os.makedirs(dense_paths)  # 如果没有这个文件夹，那就创建一个
+            if not os.path.exists(dense_paths):
+                os.makedirs(dense_paths)  
 
             for instance in raw_annotations.keys():
                 label_index = data_seq_ref[sequence]['instances'].index(instance)
@@ -292,7 +292,7 @@ def get_frame_oriented(sequences, instance_exceptions, carrada_path, write_resul
     return annotations
 
 
-def get_annot_points(data_size, single_point, raw_points):  # 用cluster模拟单个点的形状
+def get_annot_points(data_size, single_point, raw_points):
     points_list = list()
     mean_point = np.mean(raw_points, axis=0)
     for point in raw_points:
@@ -311,8 +311,8 @@ def get_annot_points(data_size, single_point, raw_points):  # 用cluster模拟�
 def get_box(box_annotations_paths, signal_type, box_light):
     box_paths = box_annotations_paths
 
-    if not os.path.exists(box_paths):  # 是否存在这个文件夹
-        os.makedirs(box_paths)  # 如果没有这个文件夹，那就创建一个
+    if not os.path.exists(box_paths):
+        os.makedirs(box_paths)
     if signal_type == 'range_doppler':
         save_path = os.path.join(box_paths,'range_doppler_light.json')
         with open(save_path, 'w') as fp:
